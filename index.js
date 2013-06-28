@@ -23,7 +23,7 @@ module.exports = function (options) {
         query = {};
       }
 
-      query[field] = query[field] || {
+      query[path] = query[path] || {
         $near: {
           $geometry: { type: 'Point', coordinates: coords }
         }
