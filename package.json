@@ -1,0 +1,26 @@
+{
+  "name": "mongoose-random",
+  "version": "0.0.1",
+  "description": "Randomly select a document from a collection",
+  "main": "index.js",
+  "scripts": {
+    "start": "mkdir -p ./test/db && mongod --dbpath ./test/db --fork",
+    "test": "./node_modules/.bin/mocha -R spec -t 100000",
+    "stop": "mongo admin --eval \"db.shutdownServer()\" && rm -rf ./test/db"
+  },
+  "devDependencies": {
+    "mongoose": "~3.6.13",
+    "mocha": "~1.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:matomesc/mongoose-random.git"
+  },
+  "keywords": [
+    "mongoose",
+    "random",
+    "document"
+  ],
+  "author": "Mihai Tomescu",
+  "license": "MIT"
+}
