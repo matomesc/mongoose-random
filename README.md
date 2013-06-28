@@ -16,7 +16,7 @@ var mongoose = require('mongoose');
 var random = require('mongoose-random');
 
 var Schema = new mongoose.Schema({ /* ... */ });
-Schema.plugin(random);
+Schema.plugin(random());
 
 var Song = mongoose.model('Song', Schema);
 
@@ -29,7 +29,7 @@ Song.findRandom(function (err, song) {
 You can change the path of the field that stores the random data by passing options to the plugin:
 
 ```
-Schema.plugin(random, { path: '_r' });
+Schema.plugin(random(), { path: '_r' });
 ```
 
 ## License
