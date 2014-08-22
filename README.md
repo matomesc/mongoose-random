@@ -1,7 +1,7 @@
 mongoose-random
 ===============
 
-Get a random document from a collection.
+Fetch random document(s) from your mongoose collections.
 
 ## Installation
 
@@ -16,20 +16,28 @@ var mongoose = require('mongoose');
 var random = require('mongoose-random');
 
 var Schema = new mongoose.Schema({ /* ... */ });
-Schema.plugin(random());
+Schema.plugin(random, { path: 'r' }); // by default `path` is `random`. It's used internally to store a random value on each doc.
 
 var Song = mongoose.model('Song', Schema);
 
-// get a random song
-Song.findRandom(function (err, song) {
-  console.log(song);
-})
-```
+// get 10 random songs
+Song.findRandom().limit(10).exec(function (err, songs) {
+  console.log(songs);
+});
 
-You can change the path of the field that stores the random data by passing options to the plugin:
+// `findRandom` has the same signature as mongoose's `Model.find`:
+var filter = { playlist: { $in: ['hip-hop', 'rap'] } };
+var fields = { name: 1, description: 0 };
+var options = { skip: 10, limit: 10 }
+Song.findRandom(filter, fields, options, function (err, songs) {
+  console.log(songs);
+});
 
-```
-Schema.plugin(random(), { path: '_r' });
+// if you have an existing collection, it must first by synced.
+// this will add random data for the `path` key for each doc.
+Song.syncRandom(function (err, result) {
+  console.log(result.updated);
+});
 ```
 
 ## License
