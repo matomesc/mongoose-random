@@ -1,6 +1,6 @@
 {
   "name": "mongoose-random",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Randomly select documents from a mongoose collection",
   "main": "index.js",
   "scripts": {
