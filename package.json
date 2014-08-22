@@ -1,7 +1,7 @@
 {
   "name": "mongoose-random",
-  "version": "0.0.2",
-  "description": "Randomly select a document from a collection",
+  "version": "0.1.0",
+  "description": "Randomly select documents from a mongoose collection",
   "main": "index.js",
   "scripts": {
     "start": "mkdir -p ./tmp/db && mongod --dbpath ./tmp/db --logpath ./tmp/log --fork --smallfiles",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "mongoose": "^3.6.13",
-	  "jasmine-node": "^1.14.5"
+  	"jasmine-node": "^1.14.5"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "mongoose",
     "random",
     "document",
-	  "mongodb"
+	"mongodb"
   ],
   "author": "Mihai Tomescu",
   "license": "MIT"
