@@ -69,11 +69,22 @@ describe('Model#findRandom()', function () {
 	});
 
 	it('should work with no arguments', function (done) {
-		var query = Test.findRandom().limit(10).skip(5).exec(function (err, docs) {
+		var data = [];
+
+		for (var i = 0; i < 100; i++) {
+			data.push({ x: Math.random() });
+		}
+
+		Test.create(data, function (err, docs) {
 			assert.ifError(err);
-			assert(docs && docs.length === 0);
-			done();
+			Test.findRandom().limit(10).skip(5).exec(function (err, docs) {
+				assert.ifError(err);
+				assert(docs && docs.length === 10);
+				done();
+			});
 		});
+
+
 	});
 
   it('should return the closest document', function (done) {
