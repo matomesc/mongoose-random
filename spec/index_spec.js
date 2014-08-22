@@ -68,6 +68,14 @@ describe('Model#findRandom()', function () {
 		});
 	});
 
+	it('should work with no arguments', function (done) {
+		var query = Test.findRandom().limit(10).skip(5).exec(function (err, docs) {
+			assert.ifError(err);
+			assert(docs && docs.length === 0);
+			done();
+		});
+	});
+
   it('should return the closest document', function (done) {
     var docs = [];
     var coords, d;
@@ -89,16 +97,11 @@ describe('Model#findRandom()', function () {
       }, {}, { limit: 1 }, function (err, actual) {
         assert.ifError(err);
         Test.findOne().sort('dist').exec(function (err, expected) {
-	        console.log('actual:', actual);
-	        console.log('expected:', expected);
           assert.ifError(err);
           assert(actual[0].get('r.coordinates.0') === expected.get('r.coordinates.0'));
           assert(actual[0].get('r.coordinates.1') === expected.get('r.coordinates.1'));
 
-	        Test.remove({}, function (err) {
-		        assert.ifError(err);
-		        done();
-	        });
+	        done();
         });
       });
     });

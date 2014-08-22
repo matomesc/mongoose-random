@@ -31,7 +31,7 @@ function random(schema, options) {
 	schema.statics.findRandom = function (conditions, fields, options, callback) {
 		var self = this;
 
-		if (typeof conditions === 'function') {
+		if (!conditions || typeof conditions === 'function') {
 			conditions = {};
 		}
 
