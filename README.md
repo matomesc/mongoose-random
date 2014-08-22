@@ -1,4 +1,4 @@
-mongoose-random
+mongoose-random ![buildstatus](https://travis-ci.org/matomesc/node-battle.svg?branch=master)
 ===============
 
 Fetch random document(s) from your mongoose collections.
